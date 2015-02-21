@@ -1,6 +1,9 @@
 ||--------------------------------------------------|--------------------------------------------------||
+
                             Getting and Cleaning Data Course Project (Coursera)
+                            
 ||--------------------------------------------------|--------------------------------------------------||  
+
 
 This repository includes documentation and code for the course project of 'Getting and Cleaning Data',
 available in Coursera.
