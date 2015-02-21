@@ -1,12 +1,9 @@
-||--------------------------------------------------|--------------------------------------------------||
+#Getting and Cleaning Data Course Project (Coursera)
 
-          Getting and Cleaning Data Course Project (Coursera)
-                            
-||--------------------------------------------------|--------------------------------------------------||  
+>This repository includes documentation and code 
+>for the course project of 'Getting and Cleaning Data',
+>available in Coursera.
 
-
-This repository includes documentation and code for the course project of 'Getting and Cleaning Data',
-available in Coursera.
 
 The repository includes the following files:
 
@@ -18,9 +15,12 @@ The repository includes the following files:
 
 The raw dataset used in the analysis can be downloaded from:
 
-https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+[UCI DATASET]
 
 The script (run_analysis.R) works when the data from Samsung Mobiles is inside the unziped folder 
 'UCI HAR Dataset' in the working directory.
 
 For detailed information about how the script works refer to 'CODEBOOK.md'.
+
+
+[UCI DATASET]: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
