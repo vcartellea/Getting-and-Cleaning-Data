@@ -8,9 +8,9 @@
 The repository includes the following files:
 
 - A R script named `'run_analysis.R'` to prepare a tidy dataset
-- A 'README.md' file describing how the script works
-- A 'CODEBOOK.md' file describing the variables
-- A 'subset.txt' file, which is the tidy dataset created by the run_analysis.R script
+- A `'README.md'` file describing how the script works
+- A `'CODEBOOK.md'` file describing the variables
+- A `'subset.txt'` file, which is the tidy dataset created by the run_analysis.R script
 
 
 The raw dataset used in the analysis can be downloaded from:
