@@ -188,11 +188,11 @@ write.table(subset, file="subset.txt", row.name=FALSE)
  >  - fBodyAccJerkMag
  >  - fBodyGyroMag
  >  - fBodyGyroJerkMag
- 
+ >
  >From these signals a set if variables were estimated:
  >  - mean(): Mean value
  >  - std(): Standard deviation
- > - mad(): Median absolute deviation 
+ >  - mad(): Median absolute deviation 
  >  - max(): Largest value in array
  >  - min(): Smallest value in array
  >  - sma(): Signal magnitude area
