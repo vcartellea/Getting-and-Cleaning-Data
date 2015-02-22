@@ -133,7 +133,7 @@ text file `using write.table()` function (with the argument row.name=FALSE).
 subset<-dataset %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
 write.table(subset, file="subset.txt", row.name=FALSE)
 
- ##The variables
+##The variables
  
  The variables used in the script are described below:
  
