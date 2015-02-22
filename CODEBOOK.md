@@ -206,6 +206,24 @@ write.table(subset, file="subset.txt", row.name=FALSE)
   - bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
   - angle(): Angle between to vectors.
   
+ In the subset ('subset.txt') created only mean() and std() values are present, and the features names were changed to be more descriptive:
+  - timeBodyAccelerometer-XYZ
+  - timeGravityAccelerometer-XYZ
+  - timeBodyAccelerometerJerk-XYZ
+  - timeBodyGyroscope-XYZ
+  - timeBodyGyroscopeJerk-XYZ
+  - timeBodyAccelerometerMagnitude
+  - timeGravityAccelerometerMagnitude
+  - timeBodyAccelerometerJerkMagnitude
+  - timeBodyGyroscopeMagnitude
+  - timeBodyGyroscopeJerkMagnitude
+  - frequencyBodyAccelerometer-XYZ
+  - frequencyBodyAccelerometerJerk-XYZ
+  - frequencyBodyGyroscope-XYZ
+  - frequencyBodyAccelerometerMagnitude
+  - frequencyBodyAccelerometerJerkMagnitude
+  - frequencyBodyGyroscopeMagnitude
+  - frequencyBodyGyroscopeJerkMagnitude
   
   
   

@@ -1,15 +1,15 @@
 #Getting and Cleaning Data Course Project (Coursera)
 
 >This repository includes documentation and code 
->for the course project of 'Getting and Cleaning Data',
->available in Coursera.
+for the course project of 'Getting and Cleaning Data',
+available in Coursera.
 
 
 The repository includes the following files:
 
 - A R script named `'run_analysis.R'` to prepare a tidy dataset
 - A `'README.md'` file describing how the script works
-- A `'CODEBOOK.md'` file describing the variables
+- A `'CODEBOOK.md'` file describing the variables and the script in detail
 - A `'subset.txt'` file, which is the tidy dataset created by the run_analysis.R script
 
 
