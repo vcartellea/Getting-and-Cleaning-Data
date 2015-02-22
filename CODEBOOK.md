@@ -68,88 +68,88 @@ of text files that are used in the analysis:
  2. The data.frames containing activity labels, subjects and features labels (corresponding to features.txt, activity_labels.txt, Y_test.txt and Y_train.txt),
  are converted to vectors by subsetting (using `[]`).
  
-``` 
+ ``` 
  - features<-features[,2]
  - subject_test<-subject_test[,1]
  - Y_test<-Y_test[,1]
  - subject_train<-subject_train[,1]
  - Y_train<-Y_train[,1]
  - activity_labels<-activity_labels[,2]
-```
+ ```
  
  3. Activity data is converted to factors to assign self-descriptive labels, using `as.factor()` and `levels()` functions.
  
-```
+ ```
  - Y_test<-as.factor(Y_test)
  - Y_train<-as.factor(Y_train)
  - levels(Y_test)<-activity_labels
  - levels(Y_train)<-activity_labels
-```
+ ```
  
  4. Two data frames are created joining subject, activity and measurements for each group (test and train), using `data.frame()` function. Using this data.frames, a unique dataset for both groups is created using `cbind()` function.
  
-```
+ ```
  - test<-data.frame(subject=subject_test,activity=Y_test, X_test)
  - train<-data.frame(subject=subject_train, activity=Y_train, X_train)
  - dataset<-rbind(test, train)
-```
+ ```
 
  5. Before filtering data to maintain only the measurements relative to mean() and std() values, 
  an appropriate label is assigned to the columns of the dataset (to make filtering easy). The labels are included in 'features.txt' file, however, this
  includes characters that can`t be used as names in R (the characters "-" and "()"). This characters are replaced by a more addecuated ones
  using the function `gsub()`. A vector with the features names is created to perform corrections.
  
-```
+ ```
  - dataset_column_names<-c("Subject", "Activity", features)
  - dataset_column_names<-gsub("\\(\\)", "" , dataset_column_names)
  - dataset_column_names<-gsub("-", "_" , dataset_column_names)
-```
+ ```
 
  6. Using the same `gsub()` function, self-descriptive names for features are generated, replacing the following characters:
- --
+ 
   * t prefix is replaced by time
   * f prefix is replaced by frequency
   * Acc is replaced by Accelerometer
   * Gyro is replaced by Gyroscope
   * Mag is replaced by Magnitude
   * BodyBody is replaced by Body
-  --
-```
+ 
+ ```
  - dataset_column_names<-gsub("^t", "time", dataset_column_names)
  - dataset_column_names<-gsub("^f", "frequency", dataset_column_names)
  - dataset_column_names<-gsub("Acc", "Accelerometer" , dataset_column_names)
  - dataset_column_names<-gsub("Gyro", "Gyroscope" , dataset_column_names)
  - dataset_column_names<-gsub("Mag", "Magnitude" , dataset_column_names)
  - dataset_column_names<-gsub("BodyBody", "Body" , dataset_column_names)
-```
+ ```
 
  7. Names are assigned to each column of the dataset using `names()` function.
  
-```
+ ```
  - names(dataset)<-dataset_column_names
-```
+ ```
  
  8. Using the column names, de dataset is filtered to maintain only the measurements relative
  to mean() and std(). The function `grepl()` is used to generate the filters. A 'filter1' is used to
  select only the columns with "Subject", "Activity", "mean" of "std" in the column name. A 'filter2' is 
  again used to eliminate from the generated subset the columns relative to "meanFreq".
  
-```
+ ```
  - filter1<-grepl("Subject|Activity|mean|std", names(dataset))
  - dataset<-dataset[,filter1]
  - filter2<-grepl("meanFreq", names(dataset))
  - dataset<-dataset[,!filter2]
-```
+ ```
 
  9. Finally, a subset of the tidy dataset generated in 8 is created. This subset comprises only the average of each 
 variable for each activity and each subject. The packadge "dplyr" is used to achieve this. The subset is saved to a 
 text file `using write.table()` function (with the argument row.name=FALSE).
 
-```
+ ```
  - library(dplyr)
  - subset<-dataset %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
  - write.table(subset, file="subset.txt", row.name=FALSE)
-```
+ ```
 
 ##The variables
  
