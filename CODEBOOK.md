@@ -47,7 +47,7 @@ of text files that are used in the analysis:
 >  5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
   
  The R script named `run_analysis.R` prepares a tidy dataset from the raw dataset. 
- The raw dataset must be in a unzip folder named `UCI HAR Dataset` in the working directory. The procedure
+ The raw dataset must be in a unzip folder named `UCI HAR Dataset` in the working directory, and package "dplyr" must be installed. The procedure
  follows a different order from the one specified in the list above in order to simplify some steps like filtering.
  
  1. The first section of the code reads the text files containing the data using the `read.table()` function.
@@ -103,6 +103,7 @@ dataset_column_names<-gsub("-", "_" , dataset_column_names)
   * Mag is replaced by Magnitude
   * BodyBody is replaced by Body
  
+ 
  >>dataset_column_names<-gsub("^t", "time", dataset_column_names)
 dataset_column_names<-gsub("^f", "frequency", dataset_column_names)
 dataset_column_names<-gsub("Acc", "Accelerometer" , dataset_column_names)
@@ -124,15 +125,91 @@ dataset<-dataset[,filter1]
 filter2<-grepl("meanFreq", names(dataset))
 dataset<-dataset[,!filter2]
 
- 9. 
- 
- 
- 
- 
+ 9. Finally, a subset of the tidy dataset generated in 8 is created. This subset comprises only the average of each 
+variable for each activity and each subject. The packadge "dplyr" is used to achieve this. The subset is saved to a 
+text file `using write.table()` function (with the argument row.name=FALSE).
+
+ >>library(dplyr)
+subset<-dataset %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
+write.table(subset, file="subset.txt", row.name=FALSE)
+
  ##The variables
  
+ The variables used in the script are described below:
  
- tBodyAcc-mean-X <- timeBodyAccelerometer-mean-X
+  - `activity_labels`: vector for activity labeling
+  - `features`: vector with the 561-features vector labels
+  - `subject_test`: vector with subject identification for test group
+  - `X_test`: dataframe with measurements for test group
+  - `Y_train`: vector with activity identification for test group
+  - `subject_train`: vector with subject identification for train group
+  - `X_train`: dataframe with measurements for train group
+  - `Y_train`: vector with activity identification for train group
+  - `test`: dataframe with the complete test data (subject, activity and measurements)
+  - `train`: dataframe with the complete train data (subject, activity and measurements)
+  - `dataset`: dataframe joining test and train data
+  - `dataset_column_names`: character vector with self-descriptive names for features
+  - `filter1`: logical vector to select columns referring "subject", "activity", "mean" of "std"
+  - `filter2`: logical vector to eliminate columns relative to "meanFreq"
+  - `subset`: dataframe with the final data, averaging each measurement by each subject and each activity
+ 
+ 
+ The raw data considers the following variables (unitless, because they are normalized):
+ 
+ >The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals
+ tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a 
+ constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass 
+ Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration 
+ signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) 
+ using another low pass Butterworth filter with a corner frequency of 0.3 Hz. Subsequently, the body 
+ linear acceleration and angular velocity were derived in time to obtain Jerk signals 
+ (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional 
+ signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, 
+ tBodyGyroMag, tBodyGyroJerkMag). Finally a Fast Fourier Transform (FFT) was applied to 
+ some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, 
+ fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals).These signals were 
+ used to estimate variables of the feature vector for each pattern:  '-XYZ' is used to denote 3-axial 
+ signals in the X, Y and Z directions.
+  - tBodyAcc-XYZ
+  - tGravityAcc-XYZ
+  - tBodyAccJerk-XYZ
+  - tBodyGyro-XYZ
+  - tBodyGyroJerk-XYZ
+  - tBodyAccMag
+  - tGravityAccMag
+  - tBodyAccJerkMag
+  - tBodyGyroMag
+  - tBodyGyroJerkMag
+  - fBodyAcc-XYZ
+  - fBodyAccJerk-XYZ
+  - fBodyGyro-XYZ
+  - fBodyAccMag
+  - fBodyAccJerkMag
+  - fBodyGyroMag
+  - fBodyGyroJerkMag
+ >From these signals a set if variables were estimated:
+  - mean(): Mean value
+  - std(): Standard deviation
+  - mad(): Median absolute deviation 
+  - max(): Largest value in array
+  - min(): Smallest value in array
+  - sma(): Signal magnitude area
+  - energy(): Energy measure. Sum of the squares divided by the number of values. 
+  - iqr(): Interquartile range 
+  - entropy(): Signal entropy
+  - arCoeff(): Autorregresion coefficients with Burg order equal to 4
+  - correlation(): correlation coefficient between two signals
+  - maxInds(): index of the frequency component with largest magnitude
+  - meanFreq(): Weighted average of the frequency components to obtain a mean frequency
+  - skewness(): skewness of the frequency domain signal 
+  - kurtosis(): kurtosis of the frequency domain signal 
+  - bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
+  - angle(): Angle between to vectors.
+  
+  
+  
+  
+ 
  
  
  
