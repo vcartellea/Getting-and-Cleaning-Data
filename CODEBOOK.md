@@ -54,14 +54,14 @@ of text files that are used in the analysis:
  This data is assigned to a variable with the same name as the text file. To avoid messing up the data with factors, the
  argument 'stringsAsFactors=FALSE' is used.
  
- >>activity_labels<-read.table("./UCI HAR Dataset/activity_labels.txt", stringsAsFactors=FALSE)
-features<-read.table("./UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
-subject_test<-read.table("./UCI HAR Dataset/test/subject_test.txt")
-X_test<-read.table("./UCI HAR Dataset/test/X_test.txt")
-Y_test<-read.table("./UCI HAR Dataset/test/Y_test.txt")
-subject_train<-read.table("./UCI HAR Dataset/train/subject_train.txt")
-X_train<-read.table("./UCI HAR Dataset/train/X_train.txt")
-Y_train<-read.table("./UCI HAR Dataset/train/Y_train.txt")
+``` - activity_labels<-read.table("./UCI HAR Dataset/activity_labels.txt", stringsAsFactors=FALSE)
+``` - features<-read.table("./UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
+``` - subject_test<-read.table("./UCI HAR Dataset/test/subject_test.txt")
+``` - X_test<-read.table("./UCI HAR Dataset/test/X_test.txt")
+``` - Y_test<-read.table("./UCI HAR Dataset/test/Y_test.txt")
+``` - subject_train<-read.table("./UCI HAR Dataset/train/subject_train.txt")
+``` - X_train<-read.table("./UCI HAR Dataset/train/X_train.txt")
+``` - Y_train<-read.table("./UCI HAR Dataset/train/Y_train.txt")
  
  2. The data.frames containing activity labels, subjects and features labels (corresponding to features.txt, activity_labels.txt, Y_test.txt and Y_train.txt),
  are converted to vectors by subsetting (using `[]`).
