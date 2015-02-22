@@ -104,6 +104,7 @@ dataset_column_names<-gsub("-", "_" , dataset_column_names)
   * BodyBody is replaced by Body
  
  
+ 
  >>dataset_column_names<-gsub("^t", "time", dataset_column_names)
 dataset_column_names<-gsub("^f", "frequency", dataset_column_names)
 dataset_column_names<-gsub("Acc", "Accelerometer" , dataset_column_names)
@@ -170,7 +171,7 @@ write.table(subset, file="subset.txt", row.name=FALSE)
  fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals).These signals were 
  used to estimate variables of the feature vector for each pattern:  '-XYZ' is used to denote 3-axial 
  signals in the X, Y and Z directions.
-  - tBodyAcc-XYZ
+>  - tBodyAcc-XYZ
   - tGravityAcc-XYZ
   - tBodyAccJerk-XYZ
   - tBodyGyro-XYZ
@@ -206,7 +207,7 @@ write.table(subset, file="subset.txt", row.name=FALSE)
   - bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
   - angle(): Angle between to vectors.
   
- In the subset ('subset.txt') created only mean() and std() values are present, and the features names were changed to be more descriptive:
+In the subset ('subset.txt') created only mean() and std() values are present, and the features names were changed to be more descriptive:
   - timeBodyAccelerometer-XYZ
   - timeGravityAccelerometer-XYZ
   - timeBodyAccelerometerJerk-XYZ
