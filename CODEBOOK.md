@@ -35,16 +35,16 @@ of text files that are used in the analysis:
  - A file with the activity performed during each measurement (codified as numbers): `Y_test.txt` and `Y_train.txt`. 
  - A bigger file with the 561-feature vector: `X_test.txt` and `X_train.txt`.
  
- ##The R script
+##The R script
  
  The course project says:
  
-> You should create one R script called run_analysis.R that does the following 
-> 1. Merges the training and the test sets to create one data set.
-> 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
-> 3. Uses descriptive activity names to name the activities in the data set
-> 4. Appropriately labels the data set with descriptive variable names. 
-> 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+> You should create one R script called run_analysis.R that does the following: 
+>  1. Merges the training and the test sets to create one data set.
+>  2. Extracts only the measurements on the mean and standard deviation for each measurement. 
+>  3. Uses descriptive activity names to name the activities in the data set
+>  4. Appropriately labels the data set with descriptive variable names. 
+>  5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
   
  The R script named `run_analysis.R` prepares a tidy dataset from the raw dataset. 
  The raw dataset must be in a unzip folder named `UCI HAR Dataset` in the working directory. The procedure
@@ -54,14 +54,14 @@ of text files that are used in the analysis:
  This data is assigned to a variable with the same name as the text file. To avoid messing up the data with factors, the
  argument 'stringsAsFactors=FALSE' is used.
  
->>activity_labels<-read.table("./UCI HAR Dataset/activity_labels.txt", stringsAsFactors=FALSE)
->>features<-read.table("./UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
->>subject_test<-read.table("./UCI HAR Dataset/test/subject_test.txt")
->>X_test<-read.table("./UCI HAR Dataset/test/X_test.txt")
->>Y_test<-read.table("./UCI HAR Dataset/test/Y_test.txt")
->>subject_train<-read.table("./UCI HAR Dataset/train/subject_train.txt")
->>X_train<-read.table("./UCI HAR Dataset/train/X_train.txt")
->>Y_train<-read.table("./UCI HAR Dataset/train/Y_train.txt")
+ >>activity_labels<-read.table("./UCI HAR Dataset/activity_labels.txt", stringsAsFactors=FALSE)
+features<-read.table("./UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
+subject_test<-read.table("./UCI HAR Dataset/test/subject_test.txt")
+X_test<-read.table("./UCI HAR Dataset/test/X_test.txt")
+Y_test<-read.table("./UCI HAR Dataset/test/Y_test.txt")
+subject_train<-read.table("./UCI HAR Dataset/train/subject_train.txt")
+X_train<-read.table("./UCI HAR Dataset/train/X_train.txt")
+Y_train<-read.table("./UCI HAR Dataset/train/Y_train.txt")
  
  2. The data.frames containing activity labels, subjects and features labels (corresponding to features.txt, activity_labels.txt, Y_test.txt and Y_train.txt),
  are converted to vectors by subsetting (using `[]`).
@@ -96,12 +96,12 @@ dataset<-rbind(test, train)
 dataset_column_names<-gsub("-", "_" , dataset_column_names)
 
  6. Using the same `gsub()` function, self-descriptive names for features are generated, replacing the following characters:
- * t prefix is replaced by time
- * f prefix is replaced by frequency
- * Acc is replaced by Accelerometer
- * Gyro is replaced by Gyroscope
- * Mag is replaced by Magnitude
- * BodyBody is replaced by Body
+  * t prefix is replaced by time
+  * f prefix is replaced by frequency
+  * Acc is replaced by Accelerometer
+  * Gyro is replaced by Gyroscope
+  * Mag is replaced by Magnitude
+  * BodyBody is replaced by Body
  
  >>dataset_column_names<-gsub("^t", "time", dataset_column_names)
 dataset_column_names<-gsub("^f", "frequency", dataset_column_names)
