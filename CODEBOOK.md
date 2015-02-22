@@ -205,7 +205,7 @@ text file `using write.table()` function (with the argument row.name=FALSE).
  >  - fBodyAccJerkMag
  >  - fBodyGyroMag
  >  - fBodyGyroJerkMag
- >
+ >  
  >From these signals a set if variables were estimated:
  >  - mean(): Mean value
  >  - std(): Standard deviation
